@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid , Box ,Typography , Chip , Fade , Slide} from '@mui/material'
 import { purple , deepOrange} from '@mui/material/colors'
 import GlobalJob from "../image/GlobalJob.PNG"
-import Mentorshow from "../image/Mentorshow.png"
+import Mentorshow from "../image/Mentorshow.PNG"
 
 
 
