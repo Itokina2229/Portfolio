@@ -51,196 +51,118 @@ const Diplome = () => {
           </Typography>
         </Box>
 
-        {/* Timeline of educations */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 4, position: "relative" }}>
-          {/* Vertical line */}
-          <Box
-            sx={{
-              position: "absolute",
-              left: { xs: 20, md: 40 },
-              top: 0,
-              bottom: 0,
-              width: 2,
-              background: 'linear-gradient(180deg, rgba(255, 138, 101, 0.5) 0%, rgba(255, 138, 101, 0.1) 100%)',
-              display: { xs: "block", md: "none" },
-            }}
-          />
-
+        {/* Horizontal grid of educations */}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
+            gap: 3,
+          }}
+        >
           {educations.map((education, index) => {
             const IconComponent = education.icon;
             return (
-              <Box
+              <Card
                 key={index}
                 sx={{
-                  display: "flex",
-                  gap: 4,
-                  alignItems: "flex-start",
-                  pl: { xs: 12, md: 0 },
-                  position: "relative",
+                  p: 3,
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 138, 101, 0.2)',
+                  bgcolor: 'rgba(26, 40, 71, 0.5)',
+                  backdropFilter: 'blur(10px)',
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 3,
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 16px 40px rgba(255, 138, 101, 0.15)',
+                    borderColor: 'rgba(255, 138, 101, 0.4)',
+                  },
                 }}
               >
-                {/* Timeline dot - Mobile */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    left: 8,
-                    top: 6,
-                    display: { xs: "flex", md: "none" },
-                    width: 24,
-                    height: 24,
-                    borderRadius: "50%",
-                    bgcolor: 'rgba(26, 40, 71, 1)',
-                    border: '3px solid #ff8a65',
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                />
-
-                {/* Left content - Desktop */}
-                <Box
-                  sx={{
-                    flex: 1,
-                    display: { xs: "none", md: "flex" },
-                    justifyContent: "flex-end",
-                    pr: 4,
-                    pt: 1,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2,
-                      p: 2.5,
-                      bgcolor: 'rgba(255, 138, 101, 0.08)',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255, 138, 101, 0.15)',
-                    }}
-                  >
-                    <Calendar size={20} color='#ff8a65' strokeWidth={2} />
-                    <Typography
+                <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  {/* Icon and title */}
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                    <Box
                       sx={{
-                        color: '#ff8a65',
-                        fontWeight: 700,
-                        fontSize: '0.95rem',
+                        p: 2,
+                        borderRadius: '8px',
+                        background: 'linear-gradient(135deg, rgba(255, 138, 101, 0.2) 0%, rgba(255, 179, 153, 0.1) 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
                       }}
                     >
+                      <IconComponent size={24} color='#ff8a65' strokeWidth={2} />
+                    </Box>
+                    <Box sx={{ flex: 1 }}>
+                      <Typography
+                        variant='h6'
+                        fontWeight={700}
+                        sx={{
+                          color: '#ffffff',
+                          mb: 0.5,
+                          fontSize: '0.95rem',
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {education.title}
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  {/* Institution */}
+                  <Typography
+                    variant='body2'
+                    fontWeight={600}
+                    sx={{
+                      color: '#ff8a65',
+                      fontSize: '0.85rem',
+                    }}
+                  >
+                    {education.institution}
+                  </Typography>
+
+                  {/* Period */}
+                  <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                    <Calendar size={14} color='#ff8a65' strokeWidth={2} />
+                    <Typography sx={{ color: '#ff8a65', fontWeight: 700, fontSize: '0.8rem' }}>
                       {education.period}
                     </Typography>
                   </Box>
-                </Box>
 
-                {/* Center dot - Desktop */}
-                <Box
-                  sx={{
-                    display: { xs: "none", md: "flex" },
-                    width: 16,
-                    height: 16,
-                    borderRadius: "50%",
-                    bgcolor: '#ff8a65',
-                    flexShrink: 0,
-                    mt: 1,
-                  }}
-                />
-
-                {/* Right content */}
-                <Box sx={{ flex: 1 }}>
-                  <Card
+                  {/* Description */}
+                  <Typography
+                    variant='body2'
+                    fontWeight={500}
                     sx={{
-                      p: 4,
-                      borderRadius: '12px',
-                      border: '1px solid rgba(255, 138, 101, 0.2)',
-                      bgcolor: 'rgba(26, 40, 71, 0.5)',
-                      backdropFilter: 'blur(10px)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 16px 40px rgba(255, 138, 101, 0.15)',
-                        borderColor: 'rgba(255, 138, 101, 0.4)',
-                      },
+                      color: '#b0b9c6',
+                      lineHeight: 1.6,
+                      fontSize: '0.85rem',
                     }}
                   >
-                    <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
-                      {/* Icon and title */}
-                      <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 3 }}>
-                        <Box
-                          sx={{
-                            p: 2,
-                            borderRadius: '8px',
-                            background: 'linear-gradient(135deg, rgba(255, 138, 101, 0.2) 0%, rgba(255, 179, 153, 0.1) 100%)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0,
-                          }}
-                        >
-                          <IconComponent size={28} color='#ff8a65' strokeWidth={2} />
-                        </Box>
-                        <Box sx={{ flex: 1 }}>
-                          <Typography
-                            variant='h6'
-                            fontWeight={700}
-                            sx={{
-                              color: '#ffffff',
-                              mb: 0.5,
-                              fontSize: '1.05rem',
-                            }}
-                          >
-                            {education.title}
-                          </Typography>
-                          <Typography
-                            variant='body2'
-                            fontWeight={600}
-                            sx={{
-                              color: '#ff8a65',
-                              fontSize: '0.9rem',
-                            }}
-                          >
-                            {education.institution}
-                          </Typography>
-                        </Box>
-                      </Box>
+                    {education.description}
+                  </Typography>
 
-                      {/* Period - Mobile */}
-                      <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1, alignItems: "center" }}>
-                        <Calendar size={16} color='#ff8a65' strokeWidth={2} />
-                        <Typography sx={{ color: '#ff8a65', fontWeight: 700, fontSize: '0.85rem' }}>
-                          {education.period}
-                        </Typography>
-                      </Box>
-
-                      {/* Description */}
-                      <Typography
-                        variant='body2'
-                        fontWeight={500}
-                        sx={{
-                          color: '#b0b9c6',
-                          lineHeight: 1.8,
-                          fontSize: '0.95rem',
-                        }}
-                      >
-                        {education.description}
-                      </Typography>
-
-                      {/* Image if available */}
-                      {education.image && (
-                        <Box
-                          component="img"
-                          src={education.image}
-                          sx={{
-                            width: "100%",
-                            height: "auto",
-                            maxHeight: 200,
-                            objectFit: "contain",
-                            borderRadius: '8px',
-                            mt: 2,
-                          }}
-                        />
-                      )}
-                    </CardContent>
-                  </Card>
-                </Box>
-              </Box>
+                  {/* Image if available */}
+                  {education.image && (
+                    <Box
+                      component="img"
+                      src={education.image}
+                      sx={{
+                        width: "100%",
+                        height: "auto",
+                        maxHeight: 120,
+                        objectFit: "contain",
+                        borderRadius: '8px',
+                        mt: 1,
+                      }}
+                    />
+                  )}
+                </CardContent>
+              </Card>
             );
           })}
         </Box>
