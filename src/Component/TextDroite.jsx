@@ -1,120 +1,144 @@
 import React from 'react'
-import { Typography, Box , Button , Stack } from '@mui/material'
-import { purple ,orange} from '@mui/material/colors'
+import { Typography, Box, Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import CV from '../image/Curriculum Vitae.pdf'
 
 const TextDroite = () => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
   return (
     <div>
-      
-     <Box sx={{ display: "flex", flexDirection: "column", gap:2}}>
-      
-      {/* Salutation */}
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        {/* Name section */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Typography
+            sx={{
+              color: '#b0b9c6',
+              fontSize: { xs: "0.95rem", md: "1rem" },
+              fontWeight: 600,
+              letterSpacing: 1,
+              textTransform: 'uppercase',
+            }}
+          >
+            RAKOTOARISOA Andrinomena
+          </Typography>
+          <Typography
+            sx={{
+              background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: { xs: "0.85rem", md: "0.9rem" },
+              fontWeight: 700,
+              letterSpacing: 0.5,
+              textTransform: 'uppercase',
+            }}
+          >
+            ITOKIANA
+          </Typography>
+        </Box>
 
-      {/* Nom complet */}
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 1, // gap-2
-          fontWeight: 600,
-          fontSize: { xs: "1.125rem", md: "1.5rem" , lg:"50px"}, // text-lg / md:text-2xl
-        }}
-      >
-        <Typography sx={{ color: "" }} fontWeight={600} fontSize={30}>RAKOTOARISOA</Typography>
-        <Typography sx={{ color: "" }} fontWeight={600} fontSize={30}>Andrinomena</Typography>
-        <Typography sx={{ color: purple[500] }} fontWeight={600} fontSize={30}>ITOKIANA</Typography>
-      </Box>
+        {/* Main title */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+          <Typography
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4.5rem" },
+              lineHeight: 1.2,
+              color: '#ffffff',
+              textShadow: '0 10px 30px rgba(255, 138, 101, 0.1)',
+            }}
+          >
+            <Box component="span">
+              Full-Stack Developer
+            </Box>
+            <br />
+            <Box
+              component="span"
+              sx={{
+                background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              DATA / IA
+            </Box>
+          </Typography>
+        </Box>
 
-      {/* Titre principal */}
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        {/* Description */}
         <Typography
           sx={{
-            fontWeight: 800,
-            fontSize: { xs: "4rem", md: "3.75rem", lg: "5.5rem" }, // text-4xl / md:text-6xl / lg:text-7xl
-            lineHeight: 1,
+            color: '#b0b9c6',
+            fontSize: { xs: "1rem", md: "1.1rem" },
+            lineHeight: 1.8,
+            maxWidth: "500px",
+            fontWeight: 500,
           }}
         >
-          <Box component="span" sx={{ color: purple[600] }} >
-           Full-Stack
-          </Box>
-          <br />
-          <Box component="span" sx={{ color: "" }}>
-            Developer - DATA/IA
-          </Box>
+          Je suis un développeur full-stack, prêt à vous aider dans votre projet
         </Typography>
+
+        {/* CTA Buttons */}
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3, pt: 2 }}>
+          <Button
+            component="a"
+            href={CV}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              px: { xs: 4, md: 6 },
+              py: 1.75,
+              background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
+              color: "#fff",
+              fontWeight: 700,
+              borderRadius: '8px',
+              textTransform: "none",
+              fontSize: '1rem',
+              boxShadow: '0 10px 30px rgba(255, 138, 101, 0.3)',
+              transition: "all 0.3s ease",
+              border: 'none',
+              cursor: 'pointer',
+              "&:hover": {
+                transform: "translateY(-4px)",
+                boxShadow: '0 15px 50px rgba(255, 138, 101, 0.4)',
+              },
+            }}
+          >
+            Voir CV
+          </Button>
+
+          <Button
+            onClick={() => {
+              const element = document.querySelector("#project");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            sx={{
+              px: { xs: 4, md: 6 },
+              py: 1.75,
+              bgcolor: 'rgba(255, 255, 255, 0.1)',
+              color: "#ff8a65",
+              fontWeight: 700,
+              borderRadius: '8px',
+              textTransform: "none",
+              fontSize: '1rem',
+              border: '2px solid rgba(255, 138, 101, 0.3)',
+              transition: "all 0.3s ease",
+              cursor: 'pointer',
+              "&:hover": {
+                bgcolor: 'rgba(255, 138, 101, 0.1)',
+                borderColor: 'rgba(255, 138, 101, 0.6)',
+                transform: "translateY(-4px)",
+              },
+            }}
+          >
+            Voir Projets
+          </Button>
+        </Box>
       </Box>
-
-      {/* Description */}
-      <Typography
-        sx={{
-          color: "gray.700",
-          fontSize: { xs: "1rem", md:"1.125rem" }, // text-base / md:text-lg
-          maxWidth: "36rem", // max-w-xl
-        }}
-      >
-       Je suis un développeur full-stack, prêt à vous aider dans votre projet
-      </Typography>
-
-      {/* Boutons */}
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-        <Button
-         component="a"        // ← important
-        href={CV}       // chemin vers ton PDF
-        target="_blank"      // ouvre dans un nouvel onglet
-         rel="noopener noreferrer" // bonne pratique sécurité
-          sx={{
-            
-            px: 6,
-            py: 1.5,
-            bgcolor: orange[400],
-            color: "#fff",
-            fontWeight: "bold",
-            borderRadius: 2,
-            textTransform: "none",
-            boxShadow: 3,
-            transition: "0.3s",
-            "&:hover": {
-              bgcolor: orange[700],
-              transform: "translateY(-4px)",
-              boxShadow: 6,
-            },
-          }}
-        >
-         Voir CV
-        </Button>
-
-        <Button
-           onClick={() => window.location.href = "#project"}
-          sx={{
-            px: 6,
-            py: 1.5,
-            bgcolor: "#fff",
-            color: "black",
-            fontWeight: "bold",
-            borderRadius: 2,
-            textTransform: "none",
-            border: "2px solid black",
-            boxShadow: 3,
-            transition: "0.3s",
-            "&:hover": {
-              bgcolor: "gray.100",
-              transform: "translateY(-4px)",
-              boxShadow: 6,
-            },
-          }}
-        >
-          Voir Projects
-        </Button>
-      </Box>
-    </Box>     
- 
-      
-
-     
     </div>
   )
 }
