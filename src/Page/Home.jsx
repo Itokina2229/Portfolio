@@ -44,15 +44,6 @@ const Home = () => {
                 justifyContent: "center",
                 position: "relative",
                 boxShadow: '0 20px 60px rgba(255, 138, 101, 0.3)',
-                animation: 'float 3s ease-in-out infinite',
-                '@keyframes float': {
-                  '0%, 100%': {
-                    transform: 'translateY(0px)',
-                  },
-                  '50%': {
-                    transform: 'translateY(-20px)',
-                  },
-                },
               }}
             >
               <Box
