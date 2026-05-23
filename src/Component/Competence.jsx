@@ -1,30 +1,30 @@
 import React from 'react'
-import { Box, Typography, Card, CardContent } from '@mui/material';
+import { Box, Typography, Card, CardContent, Chip } from '@mui/material';
 import { Code, Layers, Database, BarChart3 } from 'lucide-react';
 
 const Competence = () => {
   const skills = [
     {
       title: "Langage de programmation",
-      description: "CSS, HTML, JavaScript, Python, PHP",
+      items: ["CSS", "HTML", "JavaScript", "Python", "PHP"],
       icon: Code,
       color: '#ff8a65',
     },
     {
       title: "Framework et Bibliothèques",
-      description: "React, Angular, TypeScript, Django, Laravel, Nest.js, Node.js",
+      items: ["React", "Angular", "TypeScript", "Django", "Laravel", "Nest.js", "Node.js"],
       icon: Layers,
       color: '#ffb399',
     },
     {
       title: "Base de Données",
-      description: "MongoDB, MySQL, PostgreSQL",
+      items: ["MongoDB", "MySQL", "PostgreSQL"],
       icon: Database,
       color: '#ff8a65',
     },
     {
       title: "Data/IA",
-      description: "Pandas, Numpy, Matplotlib, sklearn",
+      items: ["Pandas", "Numpy", "Matplotlib", "sklearn"],
       icon: BarChart3,
       color: '#ffb399',
     },
@@ -78,7 +78,7 @@ const Competence = () => {
                   },
                 }}
               >
-                <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <IconComponent size={28} color={skill.color} strokeWidth={2} />
                     <Typography
@@ -93,17 +93,27 @@ const Competence = () => {
                     </Typography>
                   </Box>
 
-                  <Typography
-                    variant='body2'
-                    fontWeight={500}
-                    sx={{
-                      color: '#b0b9c6',
-                      lineHeight: 1.6,
-                      fontSize: '0.9rem',
-                    }}
-                  >
-                    {skill.description}
-                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+                    {skill.items.map((item, idx) => (
+                      <Chip
+                        key={idx}
+                        label={item}
+                        sx={{
+                          bgcolor: 'rgba(255, 138, 101, 0.15)',
+                          color: '#ff8a65',
+                          fontWeight: 600,
+                          border: '1px solid rgba(255, 138, 101, 0.3)',
+                          fontSize: '0.8rem',
+                          height: 'auto',
+                          padding: '4px 8px',
+                          '&:hover': {
+                            bgcolor: 'rgba(255, 138, 101, 0.25)',
+                            borderColor: 'rgba(255, 138, 101, 0.5)',
+                          },
+                        }}
+                      />
+                    ))}
+                  </Box>
                 </CardContent>
               </Card>
             );
