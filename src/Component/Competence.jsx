@@ -1,159 +1,163 @@
-import React from 'react'
-import { Box, Typography, Card, CardContent, Chip } from '@mui/material';
-import { Code, Layers, Database, BarChart3 } from 'lucide-react';
+
+import React, { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { LayoutGrid, List } from "lucide-react";
+
+import SkillRow from "../helpers/SkillRow";
+import TechIcon from "../helpers/Techicon";
+
+import {
+  frontendSkills,
+  backendSkills,
+  toolsSkills,
+} from "../data/tech";
 
 const Competence = () => {
-  const colorPalettes = {
-    0: { bg: '#ff8a6520', text: '#ff8a65', border: '#ff8a6550' }, // Orange
-    1: { bg: '#4ade8020', text: '#4ade80', border: '#4ade8050' }, // Green
-    2: { bg: '#60a5fa20', text: '#60a5fa', border: '#60a5fa50' }, // Blue
-    3: { bg: '#f472b620', text: '#f472b6', border: '#f472b650' }, // Pink
-    4: { bg: '#fbbf2420', text: '#fbbf24', border: '#fbbf2450' }, // Yellow
-    5: { bg: '#a78bfa20', text: '#a78bfa', border: '#a78bfa50' }, // Purple
-    6: { bg: '#06b6d420', text: '#06b6d4', border: '#06b6d450' }, // Cyan
-  };
+  const [isInline, setIsInline] = useState(true);
 
-  const skills = [
-    {
-      title: "Langage de programmation",
-      items: ["CSS", "HTML", "JavaScript", "Python", "PHP"],
-      icon: Code,
-      color: '#ff8a65',
-      categoryColor: 0,
-    },
-    {
-      title: "Framework et Bibliothèques",
-      items: ["React", "Angular", "TypeScript", "Django", "Laravel", "Nest.js", "Node.js"],
-      icon: Layers,
-      color: '#4ade80',
-      categoryColor: 1,
-    },
-    {
-      title: "Base de Données",
-      items: ["MongoDB", "MySQL", "PostgreSQL"],
-      icon: Database,
-      color: '#60a5fa',
-      categoryColor: 2,
-    },
-    {
-      title: "Data/IA",
-      items: ["Pandas", "Numpy", "Matplotlib", "sklearn"],
-      icon: BarChart3,
-      color: '#f472b6',
-      categoryColor: 3,
-    },
+  const skillRows = [
+    { items: frontendSkills, direction: "left" },
+    { items: backendSkills, direction: "right" },
+    { items: toolsSkills, direction: "left" },
   ];
 
   return (
-    <div>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 4, mb: 8 }}>
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-          <Typography
-            variant='h4'
-            fontWeight={800}
-            sx={{
-              background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Mes Compétences
-          </Typography>
-        </Box>
-
-        <Box
+    <Box
+      component="section"
+      id="skills"
+      sx={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: 3,
+        mb: 8,
+      }}
+    >
+      {/* Header */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography
+          variant="h4"
           sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" },
-            gap: 3,
+            background:
+              "linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
-          {skills.map((skill, index) => {
-            const IconComponent = skill.icon;
-            const categoryColor = colorPalettes[skill.categoryColor];
-            return (
-              <Card
-                key={index}
-                sx={{
-                  p: 3,
-                  borderRadius: '12px',
-                  border: `1px solid ${categoryColor.border}`,
-                  background: `linear-gradient(135deg, rgba(26, 40, 71, 0.8) 0%, ${categoryColor.bg} 100%)`,
-                  backdropFilter: 'blur(10px)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  minHeight: 200,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: `0 16px 40px ${categoryColor.bg}80`,
-                    borderColor: categoryColor.text,
-                  },
-                }}
-              >
-                <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        p: 1.5,
-                        borderRadius: '8px',
-                        background: `${categoryColor.bg}`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <IconComponent size={28} color={skill.color} strokeWidth={2} />
-                    </Box>
-                    <Typography
-                      variant='h6'
-                      fontWeight={700}
-                      sx={{
-                        color: '#ffffff',
-                        fontSize: '1rem',
-                      }}
-                    >
-                      {skill.title}
-                    </Typography>
-                  </Box>
+          Technologies
+        </Typography>
 
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-                    {skill.items.map((item, idx) => {
-                      const itemColor = colorPalettes[(idx + skill.categoryColor) % 7];
-                      return (
-                        <Chip
-                          key={idx}
-                          label={item}
-                          sx={{
-                            bgcolor: itemColor.bg,
-                            color: itemColor.text,
-                            fontWeight: 700,
-                            border: `1px solid ${itemColor.border}`,
-                            fontSize: '0.8rem',
-                            height: 'auto',
-                            padding: '6px 12px',
-                            transition: 'all 0.3s ease',
-                            '&:hover': {
-                              bgcolor: itemColor.text,
-                              color: '#0f172a',
-                              transform: 'scale(1.05)',
-                              fontWeight: 800,
-                            },
-                          }}
-                        />
-                      );
-                    })}
-                  </Box>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <Box
+          component="button"
+          onClick={() => setIsInline((prev) => !prev)}
+          title={isInline ? "Show animated rows" : "Show inline"}
+          aria-label="Toggle inline view"
+          sx={{
+            display: "flex",
+            width: 40,
+            height: 40,
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 1.5,
+            border: "1px dashed",
+            borderColor: "divider",
+            bgcolor: "rgba(26, 40, 71, 0.5)",
+            color: "#ff8a65",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+            "&:hover": {
+              bgcolor: "action.hover",
+              color: "text.primary",
+            },
+          }}
+        >
+          {isInline ? <LayoutGrid size={20} /> : <List size={20} />}
         </Box>
       </Box>
-    </div>
-  )
-}
 
-export default Competence
+      {/* Inline / Animated */}
+      {isInline ? (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {skillRows.map((row, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 1,
+              }}
+            >
+              {row.items.map((skill) => (
+                <Box
+                  key={skill.name}
+                  sx={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    bgcolor: "#11131A",
+                    border: "1px dashed #363636",
+                    borderRadius: "6px",
+                    px: "10px",
+                    py: "6px",
+                    color: "#FAFAFA",
+                    fontSize: "0.875rem",
+                    transition: "border-color 0.2s",
+                    "&:hover": {
+                      borderColor: "#FAFAFA",
+                    },
+                  }}
+                >
+                  <TechIcon item={skill} sx={{ width: 16, height: 16 }} />
+                  {skill.name}
+                </Box>
+              ))}
+            </Box>
+          ))}
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: "0 auto 0 0",
+              width: 40,
+              zIndex: 2,
+              pointerEvents: "none",
+              
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              inset: "0 0 0 auto",
+              width: 40,
+              zIndex: 2,
+              pointerEvents: "none",
+            },
+          }}
+        >
+          {skillRows.map((row, index) => (
+            <SkillRow
+              key={index}
+              skills={row.items}
+              direction={row.direction}
+            />
+          ))}
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+export default Competence;

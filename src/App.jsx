@@ -10,13 +10,36 @@ import { Contact } from './Page/Contact'
 function App() {
   return (
    <div>
-     <Header/>
-      <Box sx={{ pb:6,pt:6, px: { xs: 4, md: 8 }, maxWidth: "1400px", mx: "auto" }}>
-           <Home></Home>
-          <About></About>
-          <Project></Project>
-          <Contact></Contact>
-      </Box>
+<Box
+  sx={{
+    width: "100%",
+    minHeight: "100vh",
+    overflowX: { xs: "hidden", sm: "visible" },
+  }}
+>
+  <Box
+    component="main"
+    sx={{
+      mx: "auto",
+      display: "flex",
+      width: "100%",
+      maxWidth: "60rem",
+      flexDirection: "column",
+      gap: { xs: 3, sm: 5 },
+      px: { xs: 2, sm: 3 },
+      pb: { xs: 3, sm: 10 },
+      boxSizing: "border-box",
+    }}
+  >
+    <Header />
+    <Home />
+    <About />
+    <Project />
+    <Contact />
+  </Box>
+</Box>
+    
+      
      
     
    </div>

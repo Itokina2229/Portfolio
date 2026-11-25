@@ -36,7 +36,7 @@ export const Contact = () => {
 
   return (
     <div>
-      <Box sx={{ display: "flex", gap: 6, flexDirection: "column", py: 8 }}>
+      <Box sx={{ display: "flex", gap: 6, flexDirection: "column" }}>
         {/* Section Title */}
         <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
           <Typography
@@ -61,11 +61,11 @@ export const Contact = () => {
             gap: 3,
           }}
         >
-          {cards.map((card, index) => {
+          {cards.map((card, idx) => {
             const IconComponent = card.icon;
             return (
               <Card
-                key={index}
+                key={idx}
                 onClick={() => {
                   if (card.link) {
                     window.open(card.link, "_blank");
@@ -121,7 +121,7 @@ export const Contact = () => {
                       fontWeight={500}
                       sx={{
                         color: '#b0b9c6',
-                        fontSize: '0.9rem',
+                        fontSize: idx===1 ? "0.7rem" : "0.9rem",
                         lineHeight: 1.5,
                       }}
                     >

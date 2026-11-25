@@ -1,22 +1,23 @@
-import React from 'react'
-import { Box, Typography, Card, CardContent } from '@mui/material'
+
+import React from 'react';
+import { Box, Typography, Card, CardContent } from '@mui/material';
 import { GraduationCap, School, Calendar } from 'lucide-react';
-import ispm from '../image/ispm-sn.png'
+
 
 const Diplome = () => {
   const educations = [
     {
       title: "Diplôme Licence – Informatique Statistique et Intelligence Artificielle",
       institution: "INSTITUT SUPERIEUR POLYTECHNIQUE DE MADAGASCAR (ISPM)",
-      description: "Filière combinant informatique, statistique et intelligence artificielle. Elle m'a permis de développer des compétences en programmation, analyse de données et conception de solutions intelligentes.",
-      period: "2022 - Actuellement",
-      image: ispm,
+      description: "A program combining computer science, statistics, and artificial intelligence. It enabled me to develop skills in programming, data analysis, and the design of intelligent solutions",
+      period: "2022 - 2025",
+      
       icon: GraduationCap,
     },
     {
       title: "Baccalauréat - série D",
       institution: "LYCEE PRIVE MIARINTSOA (LPM)",
-      description: "Établissement d'enseignement secondaire privé dédié à la formation académique des élèves jusqu'au Baccalauréat, en mettant l'accent sur la rigueur, les disciplines scientifiques et le développement des compétences.",
+      description: "A private secondary school dedicated to providing students with an academic education up to the Baccalaureate level, emphasizing academic rigor, scientific disciplines, and skills development",
       period: "2021",
       image: null,
       icon: School,
@@ -24,7 +25,7 @@ const Diplome = () => {
     {
       title: "Formation en Python",
       institution: "Analamahitsy",
-      description: "Formation axée sur l'apprentissage du langage Python, couvrant les bases de la programmation, la logique algorithmique et la réalisation de petits projets pratiques.",
+      description: "Training focused on learning the Python programming language, covering programming fundamentals, algorithmic thinking, and the development of practical projects.",
       period: "2023",
       image: null,
       icon: GraduationCap,
@@ -32,143 +33,169 @@ const Diplome = () => {
   ];
 
   return (
-    <div>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 6, mb: 10 }}>
-        {/* Section Title */}
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-          <School size={32} color='#ff8a65' strokeWidth={2} />
-          <Typography
-            variant='h4'
-            fontWeight={800}
-            sx={{
-              background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Diplôme et Études
-          </Typography>
-        </Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, mb: 10,maxWidth: { xs: '100%', sm: '900px' }}}>
+      {/* Section Title */}
+      <Typography
+        variant="h4"
+        sx={{
+          background: 'linear-gradient(135deg, #ff8a65 0%, #ffb399 100%)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        Education and Qualifications
+      </Typography>
 
-        {/* Horizontal grid of educations */}
+      {/* Timeline */}
+      <Box sx={{ position: 'relative', pl: { xs: 4, sm: 5 } }}>
+
+        {/* Vertical line */}
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
-            gap: 3,
+            position: 'absolute',
+            left: { xs: 9, sm: 11 },
+            top: 12,
+            bottom: 12,
+            width: '2px',
+            background: 'linear-gradient(to bottom, #ff8a65, rgba(255, 138, 101, 0.15))',
           }}
-        >
-          {educations.map((education, index) => {
-            const IconComponent = education.icon;
-            return (
-              <Card
-                key={index}
+        />
+
+        {educations.map((education, index) => {
+          const IconComponent = education.icon;
+
+          return (
+            <Box
+              key={index}
+              sx={{
+                position: 'relative',
+                mb: index === educations.length - 1 ? 0 : 4,
+              }}
+            >
+              {/* Timeline point */}
+              <Box
                 sx={{
-                  p: 3,
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 138, 101, 0.2)',
-                  bgcolor: 'rgba(26, 40, 71, 0.5)',
-                  backdropFilter: 'blur(10px)',
-                  transition: 'all 0.3s ease',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 3,
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 16px 40px rgba(255, 138, 101, 0.15)',
-                    borderColor: 'rgba(255, 138, 101, 0.4)',
+                  position: 'absolute',
+                  left: { xs: -36, sm: -43 },
+                  top: 24,
+                  width: 22,
+                  height: 22,
+                  borderRadius: '50%',
+                  bgcolor: '#ff8a65',
+                  border: '4px solid #111827',
+                  boxShadow: '0 0 0 2px rgba(255, 138, 101, 0.25)',
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Education card */}
+             <Card
+                sx={{
+                  width: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255, 138, 101, 0.2)",
+                  bgcolor: "rgba(26, 40, 71, 0.5)",
+                  backdropFilter: "blur(10px)",
+                  transition: "all 0.3s ease",
+                  "@media (hover: hover)": {
+                    "&:hover": {
+                      transform: "translateX(6px)",
+                      boxShadow: "0 16px 40px rgba(255, 138, 101, 0.12)",
+                      borderColor: "rgba(255, 138, 101, 0.4)",
+                    },
                   },
                 }}
               >
-                <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  {/* Icon and title */}
-                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                <CardContent
+                  sx={{
+                    p: { xs: 2, sm: 3 },
+                    '&:last-child': { pb: { xs: 2, sm: 3 } },
+                  }}
+                >
+                  {/* Header */}
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                     <Box
                       sx={{
-                        p: 2,
+                        p: 1.5,
                         borderRadius: '8px',
-                        background: 'linear-gradient(135deg, rgba(255, 138, 101, 0.2) 0%, rgba(255, 179, 153, 0.1) 100%)',
+                        background: 'linear-gradient(135deg, rgba(255, 138, 101, 0.2), rgba(255, 179, 153, 0.1))',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexShrink: 0,
                       }}
                     >
-                      <IconComponent size={24} color='#ff8a65' strokeWidth={2} />
+                      <IconComponent size={24} color="#ff8a65" strokeWidth={2} />
                     </Box>
-                    <Box sx={{ flex: 1 }}>
+
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography
-                        variant='h6'
+                        variant="h6"
                         fontWeight={700}
                         sx={{
                           color: '#ffffff',
-                          mb: 0.5,
-                          fontSize: '0.95rem',
+                          fontSize: { xs: '0.95rem', sm: '1.05rem' },
                           lineHeight: 1.4,
+                          mb: 1,
                         }}
                       >
                         {education.title}
                       </Typography>
+
+                      <Typography
+                        variant="body2"
+                        fontWeight={600}
+                        sx={{
+                          color: '#ff8a65',
+                          fontSize: '0.85rem',
+                        }}
+                      >
+                        {education.institution}
+                      </Typography>
                     </Box>
                   </Box>
 
-                  {/* Institution */}
-                  <Typography
-                    variant='body2'
-                    fontWeight={600}
-                    sx={{
-                      color: '#ff8a65',
-                      fontSize: '0.85rem',
-                    }}
-                  >
-                    {education.institution}
-                  </Typography>
-
                   {/* Period */}
-                  <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-                    <Calendar size={14} color='#ff8a65' strokeWidth={2} />
-                    <Typography sx={{ color: '#ff8a65', fontWeight: 700, fontSize: '0.8rem' }}>
+                  <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mt: 2 }}>
+                    <Calendar size={15} color="#ff8a65" strokeWidth={2} />
+                    <Typography
+                      sx={{
+                        color: '#ff8a65',
+                        fontWeight: 700,
+                        fontSize: '0.8rem',
+                      }}
+                    >
                       {education.period}
                     </Typography>
                   </Box>
 
                   {/* Description */}
                   <Typography
-                    variant='body2'
+                    variant="body2"
                     fontWeight={500}
                     sx={{
                       color: '#b0b9c6',
-                      lineHeight: 1.6,
+                      lineHeight: 1.7,
                       fontSize: '0.85rem',
+                      mt: 2,
                     }}
                   >
                     {education.description}
                   </Typography>
 
-                  {/* Image if available */}
-                  {education.image && (
-                    <Box
-                      component="img"
-                      src={education.image}
-                      sx={{
-                        width: "100%",
-                        height: "auto",
-                        maxHeight: 120,
-                        objectFit: "contain",
-                        borderRadius: '8px',
-                        mt: 1,
-                      }}
-                    />
-                  )}
+                  {/* Institution image */}
+                
                 </CardContent>
               </Card>
-            );
-          })}
-        </Box>
+            </Box>
+          );
+        })}
       </Box>
-    </div>
-  )
-}
+    </Box>
+  );
+};
 
-export default Diplome
+export default Diplome;

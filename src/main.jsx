@@ -5,9 +5,30 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+
 const theme = createTheme({
   typography: {
-    fontFamily: "'Google Sans', sans-serif"
+    // Police principale
+    fontFamily: '"Plus Jakarta Sans", sans-serif',
+
+    // Titres
+    h1: {
+      fontFamily: '"Lora", serif',
+      fontWeight: 700,
+    },
+    h2: {
+      fontFamily: '"Lora", serif',
+      fontWeight: 700,
+    },
+    h3: {
+      fontFamily: '"Lora", serif',
+      fontWeight: 600,
+    },
+
+    // Code
+    code: {
+      fontFamily: '"JetBrains Mono", monospace',
+    },
   },
 });
 
