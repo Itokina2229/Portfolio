@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { LayoutGrid, List } from "lucide-react";
-
+import ScrollReveal from "./ScrollReveal";
 import SkillRow from "../helpers/SkillRow";
 import TechIcon from "../helpers/Techicon";
 
@@ -22,6 +22,7 @@ const Competence = () => {
   ];
 
   return (
+    
     <Box
       component="section"
       id="skills"
@@ -157,6 +158,7 @@ const Competence = () => {
         </Box>
       )}
     </Box>
+    
   );
 };
 

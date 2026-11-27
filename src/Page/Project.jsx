@@ -4,16 +4,17 @@ import { deepOrange } from '@mui/material/colors'
 import GlobalJob from "../image/GlobalJob.PNG"
 import Mentorshow from "../image/Mentorshow.PNG"
 import Dagomovie from "../image/DagoMovie.png"
+import ScrollReveal from '../Component/ScrollReveal'
 import { Github } from 'lucide-react'
 
 
 const Project = () => {
   const projects = [
     {
-      title: "Application de Gestion de candidature",
+      title: "Job Application Management System",
       company: "TCC",
       chips: ["REACT", "Express JS", "MongoDB", "Material UI"],
-      description: "Stage de trois mois en tant que stagiaire Développeur Web Full Stack au sein de TCC à Mahamasina. Durant ce stage, j'ai travaillé sur le développement complet d'une application web dédiée à la gestion des candidatures. J'ai conçu et développé des API REST, assuré l'intégration entre le front-end et le back-end, et mis en place un système d'authentification des utilisateurs. J'ai également développé un système de notifications permettant de gérer la création, la mise à jour et le changement de statut des candidatures.",
+      description: "Completed a three-month internship as a Full Stack Web Developer Intern** at TCC, located in Mahamasina. During this internship, I worked on the end-to-end development of a web application dedicated to application management. I designed and developed REST APIs, handled front-end and back-end integration, and implemented a user authentication system. I also developed a notification system to manage the creation, updating, and status changes of applications.",
       image: GlobalJob,
       href:"https://github.com/Itokina2229/Application-de-gestion-candidature",
       direction: "right",
@@ -27,10 +28,10 @@ const Project = () => {
     ]
     },
     {
-      title: "Test QA de Mentorshow",
+      title: "Test QA Mentorshow",
       company: "Globale Freelance",
       chips: ["QA Testing", "Web", "Mobile"],
-      description: "Réalisation de tests fonctionnels sur les applications web et mobile Mentorshow, avec vérification des fonctionnalités clés (connexion, inscription, authentification et navigation). Contribution à l'amélioration de la stabilité et de l'expérience utilisateur.",
+      description: "Conducted functional testing on Mentorshow web and mobile applications, verifying key features such as login, registration, authentication, and navigation. Contributed to improving application stability and overall user experience.",
       image: Mentorshow,
       direction: "left",
       href:"https://github.com/Itokina2229/",
@@ -41,9 +42,9 @@ const Project = () => {
     ]
     },
      {
-      title: "DagoMovie – Application pour regarder du film",
+      title: "DagoMovie – Movie Streaming Platform",
       company: "Globale Freelance",
-      description: "Développement d'une application web de streaming de films, permettant aux utilisateurs de regarder des films",
+      description: "Developed a movie streaming web application that allows users to browse and watch movies.",
       image: Dagomovie,
       direction: "left",
       href:"https://github.com/Itokina2229/MadaFilm",
@@ -145,7 +146,7 @@ const Project = () => {
 <Box sx={{ px: 2, mt: 4 }}>
   <Typography
     variant="h6"
-    sx={{  fontSize: "1.25rem", fontWeight: 300,   letterSpacing: "-0.025em", }}
+    sx={{  fontSize: "1.25rem", fontWeight: 500,   letterSpacing: "-0.025em", }}
   >
    {project.title}
   </Typography>
@@ -253,6 +254,7 @@ const Project = () => {
         </Box>
       </section>
     </div>
+   
   )
 }
 

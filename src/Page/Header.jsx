@@ -19,9 +19,9 @@ export const Header = () => {
   }, []);
 
   const menuItems = [
-    { text: 'Accueil', path: '#home' },
-    { text: 'À propos', path: '#about' },
-    { text: 'Projet', path: '#project' },
+    { text: 'Home', path: '#home' },
+    { text: 'About', path: '#about' },
+    { text: 'Projects', path: '#project' },
   ];
 
   return (

@@ -1,10 +1,12 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { motion } from 'framer-motion'
 import { User } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const Profil = () => {
   return (
-    <div>
+     <ScrollReveal direction="up">
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mb: 8 }}>
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <Typography
@@ -39,7 +41,7 @@ const Profil = () => {
           </Typography>
         </Box>
       </Box>
-    </div>
+        </ScrollReveal>
   )
 }
 

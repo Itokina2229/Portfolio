@@ -5,10 +5,11 @@ import OK from "../image/OK.png"
 import { BadgeCheck } from 'lucide-react'
 import { orange } from '@mui/material/colors'
 import { socials } from '../data/Social'
+import ScrollReveal from '../Component/ScrollReveal'
 
 const Home = () => {
   return (
-    <div>
+        <ScrollReveal direction="up">
       <section id='home'>
         <Box
           sx={{
@@ -100,7 +101,7 @@ const Home = () => {
           
         </Box>
       </section>
-    </div>
+       </ScrollReveal>
   )
 }
 

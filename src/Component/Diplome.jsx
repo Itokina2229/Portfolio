@@ -2,12 +2,13 @@
 import React from 'react';
 import { Box, Typography, Card, CardContent } from '@mui/material';
 import { GraduationCap, School, Calendar } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 
 const Diplome = () => {
   const educations = [
     {
-      title: "Diplôme Licence – Informatique Statistique et Intelligence Artificielle",
+      title: "Bachelor's Degree in Computer Science, Statistics, and Artificial Intelligence",
       institution: "INSTITUT SUPERIEUR POLYTECHNIQUE DE MADAGASCAR (ISPM)",
       description: "A program combining computer science, statistics, and artificial intelligence. It enabled me to develop skills in programming, data analysis, and the design of intelligent solutions",
       period: "2022 - 2025",
@@ -23,7 +24,7 @@ const Diplome = () => {
       icon: School,
     },
     {
-      title: "Formation en Python",
+      title: "Python Programming Training",
       institution: "Analamahitsy",
       description: "Training focused on learning the Python programming language, covering programming fundamentals, algorithmic thinking, and the development of practical projects.",
       period: "2023",
@@ -33,6 +34,7 @@ const Diplome = () => {
   ];
 
   return (
+     <ScrollReveal direction="up">
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, mb: 10,maxWidth: { xs: '100%', sm: '900px' }}}>
       {/* Section Title */}
       <Typography
@@ -195,6 +197,7 @@ const Diplome = () => {
         })}
       </Box>
     </Box>
+    </ScrollReveal>
   );
 };
 

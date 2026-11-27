@@ -26,7 +26,7 @@ export const Contact = () => {
       color: "#0077B5",
     },
     {
-      title: "Téléphone",
+      title: "Phone",
       description: "034 94 269 42",
       icon: Phone,
       link: null,
@@ -49,7 +49,7 @@ export const Contact = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Contactez-moi
+            Contact Me
           </Typography>
         </Box>
 
